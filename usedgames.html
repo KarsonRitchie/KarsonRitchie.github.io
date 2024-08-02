@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Used Games Store</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Used Games Store</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="programmer.html" class="active">Programmer</a></li>
+						<li><a href="gamedev.html" class="active">Game Developer</a></li>
+						<li><div class="dropdown">
+							<button class="dropbtn">Projects
+							  <i class="fa fa-caret-down"></i>
+							</button>
+							<div class="dropdown-content">
+								<a href="usedgames.html">Used Games Program</a>
+								<br>
+								<a href="simple.html">Simple Games</a>
+								<br>
+								<a href="proto.html">Survival Horror Prototype</a>
+								<br>
+								<a href="blackout.html">Blackout</a>
+								<br>
+							  </div>
+						  </div></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Used Games Store</h1>
+                            <p>For class I had to make a feature rich application. In doing so I made a store front for used game stores to use I call the Used Games Program. In it I show great
+                                use of object oriented design and modularity.
+                           </p>
+                            <img class="image" src="images/UsedGamesLogo.png" alt="The logo for the used games program" />
+                           
+                           <h2>Modularity in the Used Games Program</h2>
+                           <p>In the used games program, I tried to keep a lot of it organized and separate so that it will be easy to make and understand. its to the point where I made
+                            separate packages for each state of views or even SQL and methods/variables that will need to be used across the program named Global
+                           </p>
+                           <img class="image" src="images/gameStorePackages.png" alt="The seperated packages of the Used Games Program" />
+
+
+                           <p>The best showcase of object oriented design lies in the packages named SQL and Global</p>
+                           <br>
+                           <h2>SQL Package</h2>
+                           <p>The SQL package is pretty straightforward. Basically any use for SQL was in this package and separated by what view needed them first.</p>
+                           <img class="image" src="images/SQLClass.png" alt="The SQL Package and its classes" />
+
+
+                           <p>GeneralSQL was used for only two methods and it was to establish the connection upon bootup and get the connection anytime it needed to</p>
+                           <img class="image" src="images/startCon.png" alt="The method to start the connection upon bootup" />
+                           <br>
+                           <img class="image" src="images/getCon.png" alt="The method to retrieve the connection every time the program needs it" />
+
+
+                           <p>For the others it was practically any SQL method that a view needed or what images needed. Could be retrieving data for checking or even uploading data</p>
+                           <p>Here is an example from the SQL Images class: </p>
+                           <img class="image" src="images/loadImages.png" alt="A method that uses SQL to load images from the database to provide an example of the use of the SQL package" />
+
+
+                           <br>
+                           <h2>Global Package</h2>
+                           <p>The Global package can show off a lot more object oriented design and modularity. It hosts classes that will need to be instanced to create unique objects for the program
+                            like games, users, and discounts. However it also hosts methods, variables, and even UI elements to be instanced which I will be talking about here
+                           </p>
+                           <img class="image" src="images/globalPack.png" alt="The global package and its classes" />
+
+
+                           <h3>Methods</h3>
+                           <p>The methods here are mostly used for real time input validation as shown in the example below. Whenever a field is edited or checked these methods are ran
+                            to check for validation. Sometimes the difference when can be important because some aspects of data should only be checked when confirming due to it slowing down the
+                            program.
+                           </p>
+                           <img class="image" src="images/checkPhone.png" alt="The checkPhone method to provide an example for most of the methods in the methods class" />
+                           <p>For example, this picture below shows checking a username. However it needs to be unique so there is a boolean in place. Only check the unique username upon submission
+                            so that it is not checking the database each key press. There is much more validation in this method, but the picture only showcases checking if the username
+                            is unique.
+                           </p>
+                           <img class="image" src="images/checkUsername.png" alt="The check username method and the part where it checks if the username is unique upon submission" />
+
+
+                           <p>After the fields are checked, another method is ran to check the array lsit of errors and will act accordingly depending on if the arraylist has one error.
+                            If there is an error, the first error in the list is the text of the given label and that label is set to be visible. However if there are no errors, then the
+                            label is set to be invisible.
+                           </p>
+                           <img class="image" src="images/checkError.png" alt="The check for errors method" />
+
+
+                           <p>There is one other method I would like to talk about and its the getPassword method</p>
+                           <p>This is a simple method, but since I made it into a global script for the program, I can call on this method anytime I please from anywhere and make the
+                            information from the password field into a string for whenever I need to.
+                           </p>
+                           <img class="image" src="images/checkUsername.png" alt="The check username method and the part where it checks if the username is unique upon submission" />
+
+
+                           <h3>Variables</h3>
+                           <p>There are two classes to host just variables. The first one I have to show is Lists that really just hold array lists that will be needed throughout the
+                            program. Like a list of games in inventory, a list of users, a list of discounts, so on and so forth.
+                           </p>
+                           <img class="image" src="images/listClass.png" alt="The Lists class that hosts a variety of arraylists" />
+
+
+                           <p>The other one just hosts more basic variables like the ID of the user logged in or there level. We can also store who is the current manager or user in a string.</p>
+                           <img class="image" src="images/varClass.png" alt="The Variables class filled with variables that will be needed across the program" />
+
+
+                           <h3>Modularizing UI items</h3>
+                           <p>With it being a store front I needed a way to showcase inventory to users in a stylized manner that is not just a basic list or table. So I made a class named GameDisplay
+                            that is meant to host the ui elements that will display a game
+                           </p>
+                           <img class="image" src="images/gameDisplayClass.png" alt="The contents of the Game Display class" />
+                           <br>
+                           <img class="image" src="images/gameDisplayUI.png" alt="The UI the GameDisplay creates" />
+
+
+                           <p>Using a for loop to instance the GameDisplay class one by one and make them display the proper games we get this result for displaying inventory</p>
+                           <img class="image" src="images/displayingGames.png" alt="A screenshot of how the games are displayed thanks to the Game Display class" />
+
+							<p>For a video demonstration of this project check here: <a href="https://drive.google.com/file/d/1Z4235vU3tkYNuTey8kG_PXP7hArlHeW5/view?usp=sharing" target="_blank">Link</a></p>
+							<p>For the master branch of the project click here: <a href="https://github.com/KarsonRitchie/UsedGamesStore/tree/Master" target="_blank">Link</a></p>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

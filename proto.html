@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Survival Horror Prototype</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Survival Horror Prototype</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="programmer.html">Programmer</a></li>
+						<li><a href="gamedev.html">Game Developer</a></li>
+						<li><div class="dropdown">
+							<button class="dropbtn">Projects
+							  <i class="fa fa-caret-down"></i>
+							</button>
+							<div class="dropdown-content">
+								<a href="usedgames.html">Used Games Program</a>
+								<br>
+								<a href="simple.html">Simple Games</a>
+								<br>
+								<a href="proto.html">Survival Horror Prototype</a>
+								<br>
+								<a href="blackout.html">Blackout</a>
+								<br>
+							  </div>
+						  </div></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Survival Horror Prototype</h1>
+							<p>I have made a prototype in Godot using GDScript and its node based structure to try and see how I can replicate classic resident evil like gameplay.
+							</p>
+							<br>
+							 <span class="image fit"><img src="images/camera1.png" alt="An image of a very rough prototype for a survival horror game" /></span>
+ 
+ 
+							<h2>Fixed Camera Angles</h2>
+							<p>Something unique of this prototype is fixed camera angles which was really easy to accomplish</p>
+							<p>There are areas throughout rooms that detect if the player enters them</p>
+							<span><img src="images/cameraAreas.png" alt="A screenshot to demonstrate the collideable areas that trigger camera changes in this prototype" /></span>
+							<p>Upon entering them, the game is told to change the camera angle by giving the camera new coordinates and a rotation through a global script and
+							 it's function
+							</p>
+							<span><img src="images/cameraChange.png" alt="A screenshot of the function called to change the camera placement and rotation" /></span>
+							
+ 
+ 
+							 <p>A lot of principles and code I used here was brought over to Blackout. A better explanation for item display methods and room transitions are saved for there:
+								
+								 <a href="blackout.html">Blackout</a>
+							 </p>
+							
+							<p>Here is a video demonstration of the prototype in action: 
+								<a href="https://youtu.be/la6mMDPAMv4" target="_blank">Link</a></p>
+
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

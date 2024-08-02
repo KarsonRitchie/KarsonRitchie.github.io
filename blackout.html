@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Blackout</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Blackout</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="programmer.html">Programmer</a></li>
+						<li><a href="gamedev.html">Game Developer</a></li>
+						<li><div class="dropdown">
+							<button class="dropbtn">Projects
+							  <i class="fa fa-caret-down"></i>
+							</button>
+							<div class="dropdown-content">
+							  <a href="usedgames.html">Used Games Program</a>
+							  <br>
+							  <a href="simple.html">Simple Games</a>
+							  <br>
+							  <a href="proto.html">Survival Horror Prototype</a>
+							  <br>
+							  <a href="blackout.html">Blackout</a>
+							  <br>
+							</div>
+						  </div></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+				<section id="main" class="wrapper">
+					<div class="inner">
+						<h1 class="major">Blackout</h1>
+						<p>Although just an early prototype, my game currently in development in the Godot Game Engine, Blackout, showcases a lot of what I can do in code using GDScript (Godot's built
+							in language) and taking advantage of Godot's node based structure.
+					   </p>
+						<span class="image fit"><img src="images/blackout.png" alt="A screenshot of blackout in its very early prototype phase" /></span>
+
+
+						<h2>Modularity with Interacting</h2>
+						<p>Blackout is meant to be a survival horror title like the classic Resident Evil titles which means there's a lot I can already do to make the game run well
+							and modularize it.
+						</p>
+
+
+						<p>The best example I can demonstrate is the root of these type of games, interactivity. For instance, picking up ammo or a health item, interacting
+							with the environment for some flavor text, or even interacting with a door to go to the next area. Using a button to interact or inspect objects
+							is one major part of making these games how they are and the key to making my game a lot more modular.
+						</p>
+
+
+						<br>
+						<p>Each object type is a class like a door, an interactable object, and an item to pick up and put in the inventory. While not all derived from each other, they all
+							share one thing in common, a function called "Interact". The chain will start with the player, who has an interactable area around them that checks for collision.
+						</p>
+						<span><img src="images/interactPlayer.png" alt="A screenshot of code that is called when the player presses the interact button" /></span>
+						<p>Whenever the player tries to interact with something and the function is called, the area will check for collision of interactable items. It will get
+							the first item in the list and call that objects interact function.
+						</p>
+
+
+						<p>Anything that is created from the interactable class will call a global script that will send a signal to the main scene tree and tell it to display
+							the text given. The text given is an export variable which allows this class to be instanced and the variable changed to suit the specific object.
+						</p>
+						<span><img src="images/interactclass.png" alt="A screenshot of the interactable class and its interact function that will be called upon interaction
+							with an instance of this object" /></span>
+
+
+						<br>
+						<p>And an instance of the door class can send a signal to the main scene using the export variables to load a new scene and load specific
+							player coordinates for spawn.</p>
+							<span><img src="images/doorClass.png" alt="A screenshot of the door class and the interact function that is called when interacting with an instance of
+								this object" /></span>
+
+
+						<p>And with these being simple classes I can instance them and make creating the game so much easier. For example here is a test scene I created</p>
+						<span><img src="images/testScene.png" alt="A screenshot of test scene from blackout" /></span>
+						<p>There is a door and a bookcase. For the door just make a collideable area that when interacted with loads the specific scene and puts the player
+							in the specified coordinates. For the bookcase just make an area that instances the interactable class and give it the proper flavor text.
+						</p>
+						<span><img src="images/doorInstance.png" alt="A screenshot of an instance of the door class and its unique variables" /></span>
+						<br>
+						<span><img src="images/interactInstance.png" alt="A screenshot of an instance of the intractable class and its unique variables" /></span>
+					   
+						<br>
+						<p>Usable items are their own class that will be derived from and not just instanced. However, it still has the idea of modularity in mind</p>
+						<span><img src="images/itemClass.png" alt="A screenshot of the item class" /></span>
+						<p>A different item may have a different effect when interacted with so it is passed on until it is specified. There is also the use function which is what
+							the item will do when used and each item may have a different effect so it as well is passed on.
+						</p>
+
+
+						<h2>Item Display Functions</h2>
+						<p>Items in the inventory are displayed in a 2x3 grid and there are two functions in place to help with the display of the items</p>
+
+
+						<br>
+						<h3>Adding an item</h3>
+						<p>Most likely when a player interacts with an item, it will be added to the inventory. The inventory is just a dictionary that is displayed by the game</p>
+						<span><img src="images/inventoryB.png" alt="The inventory dictionary" /></span>
+						<p>Whenever an item is added, the addItem function is ran</p>
+						<span><img src="images/addItem.png" alt="A screenshot of the addItem function" /></span>
+						<ul>
+							<li>Step 1: A for loop is started to go through the dictionary</li>
+							<li>Step 2: The for loop checks if the current slot is empty and if it is the item will then be added to the slot</li>
+							<li>Step 3: If the slot it is in is taken but it shares the same name of the item being added,
+								the for loop checks if the item is stackable and adds the item to that stack using its
+								quantity if the item is stackable.
+							</li>
+							<li>Step 4: If there is no free slot, the for loop will print off "inventory full".</li>
+							<ul>
+								<li>The 7th slot is a unique slot and will always be taken by the lighter</li>
+								<li>This inventory full will need to be changed in the future since it will run every time there is a non stackable item taking the
+									current slot. However, this was still in testing and I have yet to implement what would happen when the inventory is full. It works as of now, but
+									will cause many issues in the future when a full inventory state is fully implemented if not fixed.
+								</li>
+							</ul>
+						</ul>
+
+
+						<br>
+						<h3>Removing an item</h3>
+						<p>When a player uses an item making the slot go free, there should be no empty slot in between items, only behind. This method runs a loop to
+							make the items line up properly
+						</p>
+						<span><img src="images/eraseItem.png" alt="A screenshot of blackout in its very early prototype phase" /></span>
+						<p>This function uses the items index instead of the item itself</p>
+
+
+						<ul>
+							<li>Step 1: The used slot will be changed back to none</li>
+							<li>Step 2: A for loop will start to go through the dictionary</li>
+							<li>Step 3: The slot will be checked if its blank and if so then another for loop will activate</li>
+							<li>Step 4: The loop will continue until finding a slot with an item in it thats in a higher slot than the item we checked to start this loop or until
+								it hits the special 7th slot
+							</li>
+							<li>Step 5: If the loop hits slot 7, the loop will break out. If it finds an applicable item in a higher slot then it will change the lower slot to
+								that item and the higher slot to no item.
+							</li>
+						</ul>
+						<p>This loop continues until it goes through the whole inventory. Basically it causes the inventory items after the blank to move up a slot, except for slot 7
+							due to that being reserved for the lighter.
+						</p>
+
+
+						<p>If you are curious about the progress so far, although not much, here is footage of the very early prototype in action: <a href="https://youtu.be/ufhKrzZY1QA" target="_blank">Link</a></p>
+					</div>
+				</section>
+
+
+		</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
